@@ -1,0 +1,20 @@
+.button-login {
+    color: #C1EBFF;
+    background-color: black;
+    border-radius: 9999px; 
+    width: 150px;
+    height: 30px;
+    font-weight: 600;
+    font-size: 1.25rem; /* Adjust text size */
+    border: none;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center text horizontally */
+    align-items: center;
+  }
+
+.button-login:focus {
+    width: 150px;
+    height: 30px;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6); 
+  }

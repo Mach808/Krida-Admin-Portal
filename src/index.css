@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+
+body {
+  background-color: #C1EBFF;
+  min-height: 100vh;
+  /* Ensure it covers the whole viewport */
+  margin: 0;
+}
