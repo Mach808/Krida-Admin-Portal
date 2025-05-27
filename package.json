@@ -1,6 +1,7 @@
 {
   "name": "admin-portal",
   "private": true,
+  "homepage": "https://github.com/Mach808/Krida-Admin-Portal.git",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
