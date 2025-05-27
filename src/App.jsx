@@ -1,15 +1,16 @@
 import './App.css'
 import AuthPage from "./Components/AuthPages/AuthPage"
 import HomePage from './Components/Homepage/HomePage'
-import Equipments from './Components/Equipments/Equipments'
-import Bookings from './Components/Bookings/Bookings'
-import Courts from './Components/Courts/Courts'
-import Sports from './Components/Sports/Sports'
-import Receipts from './Components/Receipts/Receipts'
-import EditCourts from './Components/EditCourt/EditCourt'
+import Equipments from './Components/screen/Equipments'
+import Bookings from './Components/screen/Bookings'
+import Courts from './Components/screen/Courts'
+import Sports from './Components/screen/Sports'
+import Receipts from './Components/screen/Receipts'
+import EditCourts from './Components/screen/EditCourt'
 import Settings from './Components/settings/settings'
 import { Routes, Route } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
+import TeamBooking from './Components/screen/TeamBooking.jsx'
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
       <Route path="/receipts" element={<Receipts />} />
       <Route path="/edit" element={<EditCourts />} />
       <Route path="/settingsPage" element={<Settings />} />
+      <Route path = "/teambookings" element={<TeamBooking/>} />
     </Routes>
   )
 }

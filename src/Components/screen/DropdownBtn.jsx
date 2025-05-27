@@ -1,10 +1,10 @@
 
 import { useState } from "react";
-import arrow from "../../assets/arrow.png";
+import arrow from "../../assets/arrow.png";     
 
-const DropdownButton = ({ children }) => {
+const DropdownButton = ({ sportName, courts }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [buttonStates, setButtonStates] = useState([false, false]); // false = ENABLE, true = DISABLE
+    const [buttonStates, setButtonStates] = useState(courts.map(() => false)); 
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -16,9 +16,9 @@ const DropdownButton = ({ children }) => {
         setButtonStates(updatedStates);
 
         if (!updatedStates[index]) {
-            console.log(`Court ${index + 1} ENABLED`);
+            console.log(`${sportName} Court ${index + 1} ENABLED`);
         } else {
-            console.log(`Court ${index + 1} DISABLED`);
+            console.log(`${sportName} Court ${index + 1} DISABLED`);
         }
     };
 
@@ -26,10 +26,10 @@ const DropdownButton = ({ children }) => {
         <div className="w-full">
             <button
                 onClick={toggleDropdown}
-                className="flex items-center text-4xl font-light justify-between uppercase p-4 w-full outline-none cursor-pointer"
+                className="flex items-center text-4xl font-light justify-between uppercase p-4 w-full outline-none cursor-pointer "
                 style={{ outlineStyle: "none" }}
             >
-                {children}
+                {sportName}
                 <img
                     src={arrow}
                     className={`ml-2 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
@@ -41,15 +41,13 @@ const DropdownButton = ({ children }) => {
             {isOpen && (
                 <div className="pl-6">
                     <ul className="list-none p-2 text-2xl font-normal">
-                        {[0, 1].map((index) => (
+                        {courts.map((court, index) => (
                             <li key={index}>
                                 <div className="flex justify-between h-10">
-                                    Court {index + 1}, Sports Complex
+                                    {index+1}. {court.courtName}
                                     <button
                                         onClick={() => handleBoolBtn(index)}
-                                        className={`items-center font-medium px-2 m-1 text-xl w-26 tracking-[0.1rem] rounded-md border ${
-                                            buttonStates[index] ? "bg-black text-blue-200" : "bg-transparent border-black"
-                                        }`}
+                                        className={`items-center font-medium px-2 m-1 text-xl w-26 tracking-[0.1rem] rounded-md border ${buttonStates[index] ? "bg-black text-blue-200" : "bg-transparent border-black"}`}
                                     >
                                         {buttonStates[index] ? "DISABLE" : "ENABLE"}
                                     </button>

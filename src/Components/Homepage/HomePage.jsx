@@ -7,18 +7,23 @@ import TextBtn from './textBtn'
 import Boxbtns from './boxbtns'
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css'
-import Settings from '../settings/settings'
 
 
 const HomePage = () => {
     const navigate = useNavigate();
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!loggedInUser) {
+        // You can either redirect to the login page or show a message
+        navigate("/login");
+        return null; // Or you can show a loading spinner/message if you prefer
+    }
     return (
         <div className='w-screen'>
             <div className='absolute top-9 left-0 w-full flex items-center space-x-4'> 
                 <img src={user} alt='user photo' className='ml-20 mt-2'></img>
                 <div className=' pl-6 flex items-center flex-col '>
-                    <span className="text-2xl font-medium tracking-wider uppercase text-black" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Manan Choudhary</span>
-                    <span className="text-zinc-800 font-mono tracking-wider uppercase text-l" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Developer</span>
+                    <span className="text-2xl font-medium tracking-wider uppercase text-black" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>{loggedInUser?.name}</span>
+                    <span className="text-zinc-800 font-mono tracking-wider uppercase text-l" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>{loggedInUser?.post}</span>
                 </div>
                 <img src={logo} alt='user photo' className='ml-40 mt-2'></img>
                 <img 
@@ -45,7 +50,7 @@ const HomePage = () => {
                 <div>
                     <div className='flex'>
                         <Boxbtns onClick='edit'>edit<br/>court</Boxbtns>
-                        <Boxbtns onClick='edit'>Team<br/>booking</Boxbtns>
+                        <Boxbtns onClick='teambookings'>Team<br/>booking</Boxbtns>
                         <Boxbtns onClick='edit'>edit<br/>booking</Boxbtns>
                     </div>
                     <div className='flex mt-3'>
